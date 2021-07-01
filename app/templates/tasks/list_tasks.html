@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    Listar Tarefas
+{% endblock title %}
+
+{% block content %}
+    <h1>Listagem de tarefas</h1>
+    {% for task in tasks %}
+        <div class="card mb-3">
+            <div class="card-header">
+                {{ task.get_priority_display }}
+            </div>
+            <div class="card-body">
+                <h5 class="card-title">{{ task.title }}</h5>
+                <p class="card-text">{{ task.description }}</p>
+                <hr>
+                <a href="{% url 'editar_tarefa' task.id %}">Editar Tarefa</a>
+                <a href="{% url 'remover_tarefa' task.id %}">Remover Tarefa</a>
+            </div>
+        </div>
+    {% endfor %}
+    <a href="{% url 'cadastrar_tarefa' %}"><input type="button" class="btn btn-primary mb-3" value="Cadastrar Tarefa"></a>
+{% endblock content %}
