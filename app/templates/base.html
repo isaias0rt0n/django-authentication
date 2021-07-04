@@ -25,6 +25,12 @@
               <li class="nav-item active">
                 <a class="nav-link" href="{% url 'listar-tarefas' %}">Listar Tarefas</a>
               </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="#">{{ request.user.username }}</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="{% url 'deslogar_usuario' %}">Deslogar</a>
+              </li>
             </ul>
         </div>
     </nav>
