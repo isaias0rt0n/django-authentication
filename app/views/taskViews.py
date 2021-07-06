@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from ..forms import TaskForm
@@ -10,6 +11,7 @@ def listTasks(request):
     return render(request, 'tasks/list_tasks.html', {"tasks": tasks})
 
 
+@login_required()
 def registerTask(request):
     if request.method == "POST":
         form_task = TaskForm(request.POST)
@@ -27,6 +29,7 @@ def registerTask(request):
     return render(request, 'tasks/form_task.html', {"form_task": form_task})
 
 
+@login_required()
 def editTask(request, id):
     task_bd = taskService.listTaskId(id)
     form_task = TaskForm(request.POST or None, instance=task_bd)
@@ -42,6 +45,7 @@ def editTask(request, id):
     return render(request, 'tasks/form_task.html', {'form_task': form_task})
 
 
+@login_required()
 def removeTask(request, id):
     task_bd = taskService.listTaskId(id)
     if request.method == "POST":
