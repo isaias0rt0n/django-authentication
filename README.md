@@ -18,8 +18,5 @@ $ pip install -r requirements.txt
 $ pythom manage.py migrate
 ```
 ```
-$ pythom manage.py migrate
-```
-```
 $ python manage.py runserver
 ```
